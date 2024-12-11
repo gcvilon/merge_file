@@ -1,7 +1,6 @@
 def merge_files(file_list, output_file):
     files_info = []
 
-    # Сбор информации о файлах
     for filepath in file_list:  # Используем заданный список файлов
         try:
             with open(filepath, 'r', encoding='UTF-8') as file:
@@ -16,10 +15,8 @@ def merge_files(file_list, output_file):
         except Exception as e:
             print(f"Ошибка при обработке файла {filepath}: {e}")
 
-    # Сортировка файлов по количеству строк
     files_info.sort(key=lambda x: x['line_count'])
 
-    # Запись в результирующий файл
     try:
         with open(output_file, 'w', encoding='UTF-8') as outfile:
             for file_info in files_info:
@@ -29,6 +26,5 @@ def merge_files(file_list, output_file):
     except Exception as e:
         print(f"Ошибка при записи в файл {output_file}: {e}")
 
-# Пример использования
 file_list = ['1.txt', '2.txt', '3.txt']  # Укажите список файлов в папке
 merge_files(file_list, 'result.txt')
